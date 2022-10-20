@@ -50,7 +50,7 @@ io.on('connection',(socket) => {
   socketServer(io,socket)
 });
 
-// app.use(routes.error)
+app.use(routes.error)
 
 const PORT = process.env.PORT || 8080
 
