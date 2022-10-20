@@ -34,6 +34,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 
+
 app.use(userRouter)
 app.use(graphqlProductRouter)
 app.use(graphqlChatRouter)
@@ -49,6 +50,9 @@ app.use("/options",authenticateToken,isAdmin,routes.getOptions)
 io.on('connection',(socket) => {
   socketServer(io,socket)
 });
+app.get("/favicon.ico",((req,res) => {
+  res.sendFile("./public/bootstrap.ico")
+}))
 
 app.use(routes.error)
 
